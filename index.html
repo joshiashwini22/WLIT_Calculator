@@ -1,0 +1,134 @@
+<!--Make a calculator using HTML, CSS, JavaScript. -->
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta tags for calculator page -->
+	<meta name="description" content="Calculator">
+    <meta name="keyword" content="Calculator, Online Calculator">
+    <meta name="author" content="Ashwini Joshi">
+    <meta http-equiv="refresh" content="3600">
+
+    <!-- Title of the page -->
+	<title>Calculator</title>
+
+	<!-- CSS for calculator -->
+	<style type="text/css">
+		/* Margin for all. */
+		*{  
+			margin: 0;  
+			padding: 0;  
+		}
+
+		/*Displaying a horizontal bar at the top with heading content.*/
+		h1{
+			background-color: purple;
+			text-align: center;
+			color: white;
+			margin: 10px;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+
+		/* The frame of the calculator. */
+		.calcstyle{
+			width: 310px;
+			height: 350px;
+			border: 3px solid ghostwhite;
+			text-align: center;
+			background-color: darkgrey;
+			margin: 20px auto;
+			padding: 20px;
+		}
+
+		/* The selected numbers, operations and results will be displayed here. */
+		.display{
+			width: 250px;
+			height: 50px;
+			margin: 5px;
+			padding: 5px;
+			font-size: 25px;
+			margin-bottom: 20px;
+			background-color: lightgreen;
+		}
+
+		/* The layout of the buttons in the calculator used to give input. */
+		.button{
+			width: 50px;
+			height: 50px;
+			background-color: maroon;
+			color: white;
+			cursor: pointer;
+			margin: 5px;
+			font-size: 25px;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- Heading of the page. -->
+	<h1>Online Calculator Portal</h1>
+
+	<!-- Calculator -->
+	<div class="calcstyle">
+		<form name="calcform">
+			<input class="display" name="display">
+		</form>
+		<table>
+			<tr>
+				<td><input class="button" type="button" value="7" onclick="enter(7)"></td>
+				<td><input class="button" type="button" value="8" onclick="enter(8)"></td>
+				<td><input class="button" type="button" value="9" onclick="enter(9)"></td>
+				<td><input class="button" type="button" value="B" onclick="remove()"></td>
+				<td><input class="button" type="button" value="C" onclick="calcform.display.value=''"></td>
+			</tr>
+			<tr>
+				<td><input class="button" type="button" value="4" onclick="enter(4)"></td>
+				<td><input class="button" type="button" value="5" onclick="enter(5)"></td>
+				<td><input class="button" type="button" value="6" onclick="enter(6)"></td>
+				<td><input class="button" type="button" value="/" onclick="enter('/')"></td>
+				<td><input class="button" type="button" value="x" onclick="enter('*')"></td>
+			</tr>
+			<tr>
+				<td><input class="button" type="button" value="1" onclick="enter(1)"></td>
+				<td><input class="button" type="button" value="2" onclick="enter(2)"></td>
+				<td><input class="button" type="button" value="3" onclick="enter(3)"></td>
+				<td rowspan="2"><input class="button" style="height: 110px;" type="button" value="+" onclick="enter('+')"></td>
+				<td><input class="button" type="button" value="-" onclick="enter('-')"></td>
+			</tr>
+			<tr>
+				<td><input class="button" type="button" value="0" onclick="enter(0)"></td>
+				<td><input class="button" type="button" value="00" onclick="enter('00')"></td>
+				<td><input class="button" type="button" value="." onclick="enter('.')"></td>
+				<td><input class="button" type="button" value="=" onclick="equals()"></td>
+			</tr>
+		</table>		
+	</div>
+
+	<!-- JavaScript for calculator -->
+	<script type="text/javascript">
+
+		//Used to take number as input in display
+		function enter(number)   
+		{  
+			document.calcform.display.value = document.calcform.display.value + number;  
+		}
+
+		//Used to return the calculated value based on the numbers and operations given as input
+		function equals()  
+		{  
+			var x = document.calcform.display.value;  
+			if(x) 
+			{  
+				document.calcform.display.value = eval(x)  
+			}  
+		}
+
+		//Used to remove the item at the end 
+		function remove()  
+		{  
+			var x = document.calcform.display.value;  
+			document.calcform.display.value = x.substring(0, x.length - 1); 
+		}    
+	</script>
+</body>
+</html>
